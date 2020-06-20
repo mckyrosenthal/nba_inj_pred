@@ -4,5 +4,10 @@ This project aims to apply machine learning (ML) techniques to the problem of re
 
 The data for this project was complied from three distinct sources: first, NBA injuries from the 2010-2020 were downloaded from the [Pro Sports Transactions](https://www.prosportstransactions.com/basketball/Search/Search.php) website, using both the "Missed games due to injury" and the "Movement to/from injured/inactive list (IL)" filters. The second filter is necessary as these two catergories are mutually exclusive, and the first catergory misses many injuries. See [this notebook](download_inj_data.ipynb) for details.
 
+This list of injuries is then correlated with the game the player was injured in, using game logs from [Basketball reference](https://www.basketball-reference.com/) [(see this notebook).](make_inj_df.ipynb) We use custom scrapers to pull not just the games the player was injured in, but all stats from the 2010-2020 seasons for each player that appears in our list of injuries. We also pull metadata for each player, i.e. their height, weight, which hand they shoot with, and their listed position on Basketball reference. We also classify players as a "Guard," "Wing," or "Big" using their listed position on Basketball reference. Finally, we filter out all players who didn't average at least 15 minutes per game over their career.
 
+This list of games will constitute the entries in our training data, but we obviously can't use the the statistics from the games themselves as features. One thing we can do immediately with this data is determine the distribution of the number of games players miss due to injuries.
 
+![alt text](missed_games_fig.png "Number of games missed due to injury")
+
+The data have mean $\mu = 5.889$, and standard deviation $\sigma = 10.470$.
