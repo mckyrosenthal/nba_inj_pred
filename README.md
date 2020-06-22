@@ -32,6 +32,18 @@ We then use 5-fold cross-validation to optimize the hyperparameters of the logis
 
 ![alt text](roc_simple.png "Confusion matrix")
 
-In order to investigate the best performing features in a more sophisticated manner, we also use recursive feature elimination to identify the best performing subset of features. We again use 5-fold cross validation, and optimize the f1 score.  
+In order to investigate the best performing features in a more sophisticated manner, we also use recursive feature elimination (RFE) to identify the best performing subset of features. We again use 5-fold cross validation, and optimize the f1 score. The best scoring features are shown below.
 
 ![alt text](rfe_best_feat.png "RFE best features")
+
+There is considerable overlap between these two sets of features. We see that the number of previous injuries and the player's age both appear, making it appear that long term wear and tear contributes substantially to the probability of an injury. The average number of free throw attempts and free throws the player averaged over the last 3 weeks appear as well, making it seem that going to the free throw line frequency is associated with injury. Both methods of selection favor some number of the speed-distance tracking stats, though RFE favors using more. While there are several differences between the two sets of feature, one of particular note is that features chosen through correlation include far more back-to-back statistics than RFE, which only chooses one b2b feature.
+
+The model with features chosen using RFE was then compared to training data. The performance on the training set is quite similar to the performance above. 
+
+#### Practical application of model
+
+As it currently stands, while the model certainly useful for understanding what features are associated with injury, the model is not really practical for predicting NBA injuries. This stems from the model's FP rate, which misclassifies a large number of games. We can get a quantitative idea of how many games our classifier gains/loses by taking the number of injuries we correctly classify, multiplying by the number of games we gain by correctly classifying an injury, and subtracting the number of false positives, i.e.
+
+\begin{align}
+x = y
+\end{align}
