@@ -58,7 +58,7 @@ We use this model to predict probabilities for the entirety of our dataset. Over
 
 We attempted to use several more sophisticated learning algorithms to fit our dataset. We first attempted to maximize the "net games" criterion we identified previously. We tried fitting the data using Decision Trees, Random Forests, and Support Vector Machines. The results [can be found here](other_algos_net_games.ipynb). None of the more advanced classifiers resulted in a substantive increase over the logisitc regression in terms of net games. Generally, these classifiers ended up classifying few, if any games as injuries, resulting in net games hovering around 0.
 
-We also tried to train the above algorithms [using f1 score as our metric.](other_algos_f1_score.ipynb) In this case these algorithms performed marginally better than the logistic regression, but not by a substantial margin.
+We also tried to train the above algorithms [using f1 score as our metric.](other_algos_f1.ipynb) In this case these algorithms performed marginally better than the logistic regression, but not by a substantial margin.
 
 ### Comparison to Talduker et al. (2016) using 7 day prediction window
 
