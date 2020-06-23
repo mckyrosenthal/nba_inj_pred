@@ -6,7 +6,7 @@ This project aims to apply machine learning (ML) techniques to the problem of re
 
 ### Data scraping and cleaning
 
-The data for this project was complied from three distinct sources: first, NBA injuries from 2010-2020 were downloaded from the [Pro Sports Transactions](https://www.prosportstransactions.com/basketball/Search/Search.php) website, using both the "Missed games due to injury" and the "Movement to/from injured/inactive list (IL)" filters. The second filter is necessary as these two categories are mutually exclusive, and the first category misses many injuries. See [this notebook](download_inj_data.ipynb) for details.
+The data for this project was complied from three distinct sources: first, NBA injuries from 2010-2020 were downloaded from the [Pro Sports Transactions](https://www.prosportstransactions.com/basketball/Search/Search.php) website, using both the "Missed games due to injury" and the "Movement to/from injured/inactive list (IL)" filters. The second filter is necessary as these two categories are mutually exclusive, and the first category misses many injuries. See [this notebook](/notebooks/download_inj_data.ipynb) for details.
 
 This list of injuries is then correlated with the game the player was injured in, using game logs from [Basketball reference](https://www.basketball-reference.com/) [(see this notebook).](make_inj_df.ipynb) We use custom scrapers to pull not just the games the player was injured in, but all stats from the 2010-2020 seasons for each player that appears in our list of injuries. We also pull metadata for each player, i.e. their height, weight, which hand they shoot with, and their listed position on Basketball reference. We also classify players as a "Guard," "Wing," or "Big" using their listed position on Basketball reference. Finally, we filter out all players who didn't average at least 15 minutes per game over their career.
 
@@ -22,7 +22,7 @@ We also include [speed-distance tracking data](https://stats.nba.com/players/spe
 
 ### Data Analysis
 
-We begin by attempt to model the data using a [simple logistic regression model](log_reg.ipynb). We begin by identifying the best features in a simple manner using the correlations between the features and whether the player was injured in the a given game. We identify the 30 "best" features by keeping the 30 features with the highest correlation, but also dropping features that correspond to the same statistic but over a different time window. The best performing features found using this method are
+We begin by using a [simple logistic regression model](log_reg.ipynb). We begin by identifying the best features in a simple manner using the correlations between the features and whether the player was injured in the a given game. We identify the 30 "best" features by keeping the 30 features with the highest correlation, but also dropping features that correspond to the same statistic but over a different time window. The best performing features found using this method are
 
 ![alt text](best_feats_corr.png "Best features from correlation with Was_Injured")
 
